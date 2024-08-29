@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @StepScope
 public class HelloTasklet1 implements Tasklet {
     @Override
-    public RepeatStatus execute(StepCounteribution contribution,
+    public RepeatStatus execute(StepContribution contribution,
             ChunkContext chunkContext) throws Exception {
         System.out.println("Hello Tasklet1");
         return RepeatStatus.FINISHED;
