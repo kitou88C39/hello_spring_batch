@@ -33,4 +33,8 @@ public class SpringConfig {
                 .tasklet(helloTasklet1, transactionManager)
                 .build();
     }
+
+    @Bean
+    public Job helloJob() {
+    }
 }
