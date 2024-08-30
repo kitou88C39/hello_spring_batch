@@ -24,4 +24,7 @@ public class SpringConfig {
         this.jobRepository = jobRepository;
         this.platformTransactionManager = transactionManager;
     }
+
+    public Step helloTasklet1() {
+    }
 }
