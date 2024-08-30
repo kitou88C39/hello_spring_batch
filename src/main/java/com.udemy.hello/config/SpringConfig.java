@@ -13,19 +13,22 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 public class SpringConfig {
     private final JobLauncher jobLauncher;
     private final JobRepository jobRepository;
-    private final PlatformTransactionManager platformTransactionManager;
+    private final PlatformTransactionManager transactionManager;
 
     @Autowired
     @Qualifier("HelloTasklet1")
-    private Tasklet HelloTasklet1;
+    private Tasklet helloTasklet1;
 
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
             PlatformTransactionManager transactionManager) {
         this.jobLauncher = jobLauncher;
         this.jobRepository = jobRepository;
-        this.platformTransactionManager = transactionManager;
+        this.transactionManager = transactionManager;
     }
 
     public Step helloTasklet1() {
+        return new StepBuilder("helloTasklet1Step", jobRepository)
+                .tasklet(helloTasklet1, transactionManager)
+                .build();
     }
 }
