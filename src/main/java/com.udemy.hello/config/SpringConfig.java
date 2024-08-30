@@ -2,6 +2,7 @@ package com.udemy.hello.config;
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -38,6 +39,9 @@ public class SpringConfig {
 
     @Bean
     public Job helloJob() {
-        return new JobBuilder(null, jobRepository)
+        return new JobBuilder("helloJob", jobRepository)
+                .incrementer(new RunIdIncrementer())
+                .start(helloTaskletStep1())
+                .build();
     }
 }
