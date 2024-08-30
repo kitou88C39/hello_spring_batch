@@ -1,12 +1,13 @@
 package com.udemy.hello.config;
 
-import java.util.ArrayList;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.batch.core.step.builder.StepBuilder;
 
 @Configuration
 public class SpringConfig {
