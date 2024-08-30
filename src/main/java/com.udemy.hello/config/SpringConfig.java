@@ -20,7 +20,7 @@ public class SpringConfig {
     private final PlatformTransactionManager transactionManager;
 
     @Autowired
-    @Qualifier("HelloTasklet1")
+    @Qualifier("helloTasklet1")
     private Tasklet helloTasklet1;
 
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
@@ -32,7 +32,7 @@ public class SpringConfig {
 
     @Bean
     public Step helloTasklet1() {
-        return new StepBuilder("helloTasklet1Step", jobRepository)
+        return new StepBuilder("helloTaskletStep1", jobRepository)
                 .tasklet(helloTasklet1, transactionManager)
                 .build();
     }
