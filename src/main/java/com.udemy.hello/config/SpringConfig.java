@@ -20,7 +20,7 @@ public class SpringConfig {
     private final PlatformTransactionManager transactionManager;
 
     @Autowired
-    @Qualifier("HelloTasklet1")
+    @Qualifier("helloTasklet1")
     private Tasklet helloTasklet1;
 
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
