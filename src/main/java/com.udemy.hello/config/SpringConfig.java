@@ -5,6 +5,7 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -26,6 +27,7 @@ public class SpringConfig {
         this.transactionManager = transactionManager;
     }
 
+    @Bean
     public Step helloTasklet1() {
         return new StepBuilder("helloTasklet1Step", jobRepository)
                 .tasklet(helloTasklet1, transactionManager)
