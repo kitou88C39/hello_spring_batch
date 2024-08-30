@@ -32,7 +32,7 @@ public class SpringConfig {
 
     @Bean
     public Step helloTasklet1() {
-        return new StepBuilder("helloTaskletStep1", jobRepository)
+        return new StepBuilder("helloTasklet1Step", jobRepository)
                 .tasklet(helloTasklet1, transactionManager)
                 .build();
     }
