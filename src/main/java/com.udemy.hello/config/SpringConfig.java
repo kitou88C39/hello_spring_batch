@@ -1,6 +1,7 @@
 package com.udemy.hello.config;
 
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.JobParametersValidator;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
@@ -30,8 +31,12 @@ public class SpringConfig {
         this.transactionManager = transactionManager;
     }
 
+    public JobParametersValidator jobParametersValidator() {
+
+    }
+
     @Bean
-    public Step helloTasklet1() {
+    public Step helloTaskletStep1() {
         return new StepBuilder("helloTasklet1Step", jobRepository)
                 .tasklet(helloTasklet1, transactionManager)
                 .build();
