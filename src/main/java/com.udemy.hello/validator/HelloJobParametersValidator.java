@@ -23,7 +23,8 @@ public class HelloJobParametersValidator implements JobParametersValidator {
         try {
             Integer.parseInt(param2);
         } catch (Exception e) {
-            throw new JobParametersInvalidException("param2=" + param2 + "paramsは数値を指定してください。");
+            throw new JobParametersInvalidException("param2=" + param2
+                    + "paramsは数値を指定してください。");
         }
     }
 }
