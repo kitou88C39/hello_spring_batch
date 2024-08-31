@@ -1,7 +1,8 @@
 package com.udemy.hello.config;
 
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersValidator;
-import org.springframework.batch.core.*;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+import com.udemy.hello.validator.HelloJobParametersValidator;
 
 @Configuration
 public class SpringConfig {
@@ -31,8 +33,9 @@ public class SpringConfig {
         this.transactionManager = transactionManager;
     }
 
+    @Bean
     public JobParametersValidator jobParametersValidator() {
-
+        return new HelloJobParametersValidator();
     }
 
     @Bean
@@ -47,6 +50,7 @@ public class SpringConfig {
         return new JobBuilder("helloJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(helloTaskletStep1())
+                .validator(jobParametersValidator())
                 .build();
     }
 }
