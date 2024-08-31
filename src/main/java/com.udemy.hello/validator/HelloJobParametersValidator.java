@@ -1,5 +1,7 @@
 package com.udemy.hello.validator;
 
-public class HelloJobParametersValidator {
+import org.springframework.batch.core.JobParametersValidator;
+
+public class HelloJobParametersValidator implements JobParametersValidator {
 
 }
