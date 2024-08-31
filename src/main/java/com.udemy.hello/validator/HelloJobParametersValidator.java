@@ -11,6 +11,9 @@ public class HelloJobParametersValidator implements JobParametersValidator {
             throws JobParametersInvalidException {
         // パラメータの値チェック
         String param1 = parameters.getString("param1");
+        if (!param1.equals("DEV") &&
+                !param1.equals("TEST") &&
+                !param1.equals("PROD")) {
+        }
     }
-
 }
