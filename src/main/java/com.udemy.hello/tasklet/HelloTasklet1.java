@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("HelloTasklet1")
+
 @StepScope
 public class HelloTasklet1 implements Tasklet {
     // @Valueアノテーションを指定
