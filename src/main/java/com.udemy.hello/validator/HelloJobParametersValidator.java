@@ -7,7 +7,10 @@ import org.springframework.batch.core.JobParametersValidator;
 public class HelloJobParametersValidator implements JobParametersValidator {
 
     @Override
-    public void validate(JobParameters parameters) throws JobParametersInvalidException {
+    public void validate(JobParameters parameters)
+            throws JobParametersInvalidException {
+        // パラメータの値チェック
+        String param1 = parameters.getString("param1");
     }
 
 }
