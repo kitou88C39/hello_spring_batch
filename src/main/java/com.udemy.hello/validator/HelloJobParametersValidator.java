@@ -14,6 +14,8 @@ public class HelloJobParametersValidator implements JobParametersValidator {
         if (!param1.equals("DEV") &&
                 !param1.equals("TEST") &&
                 !param1.equals("PROD")) {
+            throw new JobParametersInvalidException("param1:" + param1
+                    + "DEV/TEST/PRODのいずれかを指定してください");
         }
     }
 }
