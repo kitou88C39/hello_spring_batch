@@ -9,13 +9,21 @@ public class HelloJobParametersValidator implements JobParametersValidator {
     @Override
     public void validate(JobParameters parameters)
             throws JobParametersInvalidException {
-        // パラメータの値チェック
+        // パラメータ1の値チェック
         String param1 = parameters.getString("param1");
         if (!param1.equals("DEV") &&
                 !param1.equals("TEST") &&
                 !param1.equals("PROD")) {
             throw new JobParametersInvalidException("param1:" + param1
                     + "DEV/TEST/PRODのいずれかを指定してください");
+        }
+        // パラメータ2の値チェック
+        String param2 = parameters.getString("param2");
+        // 数値であることをチェック
+        try {
+            Integer.parseInt(param2);
+        } catch (Exception e) {
+            throw new JobParametersInvalidException("param2=" + param2 + "paramsは数値を指定してください。");
         }
     }
 }
