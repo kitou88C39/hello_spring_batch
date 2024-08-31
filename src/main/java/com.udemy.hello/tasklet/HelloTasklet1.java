@@ -12,16 +12,20 @@ import org.springframework.stereotype.Component;
 @StepScope
 public class HelloTasklet1 implements Tasklet {
     // @Valueアノテーションを指定
-    @Value("#{jobParameters['param1']]}")
-    pravate String param1;
+    @Value("#{jobParameters['param1']}")
+    private String param1;
 
-    @Value("#{jobParameters['param2']]}")
-    pravate String param2;
+    @Value("#{jobParameters['param2']}")
+    private Integer param2;
 
     @Override
     public RepeatStatus execute(StepContribution contribution,
             ChunkContext chunkContext) throws Exception {
+
         System.out.println("Hello Tasklet1");
+        System.out.println("param1=" + param1);
+        System.out.println("param2=" + param2);
+
         return RepeatStatus.FINISHED;
     }
 }
