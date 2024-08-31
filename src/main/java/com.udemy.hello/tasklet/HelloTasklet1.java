@@ -1,5 +1,6 @@
 package com.udemy.hello.tasklet;
 
+import org.springframework.batch.core.ExecutionContext;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("HelloTasklet1")
-
 @StepScope
 public class HelloTasklet1 implements Tasklet {
     // @Valueアノテーションを指定
