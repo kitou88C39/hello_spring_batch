@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.udemy.hello.validator.HelloJobParametersValidator;
+import org.springframework.batch.core.JobParametersInvalidException;
 
 @Configuration
 public class SpringConfig {
