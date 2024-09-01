@@ -27,6 +27,7 @@ public class HelloTasklet1 implements Tasklet {
         System.out.println("param1=" + param1);
         System.out.println("param2=" + param2);
 
+        // JobExecutionContextを取得
         ExecutionContext jobContext = contribution.getStepExecution()
                 .getJobExecution()
                 .getExecutionContext();
