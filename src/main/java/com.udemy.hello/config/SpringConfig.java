@@ -46,6 +46,13 @@ public class SpringConfig {
     }
 
     @Bean
+    public Step helloTaskletStep2() {
+        return new StepBuilder("helloTasklet2Step", jobRepository)
+                .tasklet(helloTasklet2, transactionManager)
+                .build();
+    }
+
+    @Bean
     public Job helloJob() {
         return new JobBuilder("helloJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
