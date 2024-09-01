@@ -57,6 +57,7 @@ public class SpringConfig {
         return new JobBuilder("helloJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(helloTaskletStep1())
+                .next(helloTaskletStep2())
                 .validator(jobParametersValidator())
                 .build();
     }
