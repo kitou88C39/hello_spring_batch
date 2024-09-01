@@ -8,9 +8,11 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
 @Component("HelloTasklet1")
 @StepScope
+@Slf4j
 public class HelloTasklet1 implements Tasklet {
     // @Valueアノテーションを指定
     @Value("#{jobParameters['param1']}")
@@ -23,9 +25,13 @@ public class HelloTasklet1 implements Tasklet {
     public RepeatStatus execute(StepContribution contribution,
             ChunkContext chunkContext) throws Exception {
 
-        System.out.println("Hello Tasklet1");
-        System.out.println("param1=" + param1);
-        System.out.println("param2=" + param2);
+        log.info("Hello Tasklet1");
+        log.info("param1=" + param1);
+        log.info("param2=" + param2);
+
+        // System.out.println("Hello Tasklet1");
+        // System.out.println("param1=" + param1);
+        // System.out.println("param2=" + param2);
 
         // JobExecutionContextを取得
         ExecutionContext jobContext = contribution.getStepExecution()
