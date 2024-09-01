@@ -26,8 +26,8 @@ public class HelloTasklet1 implements Tasklet {
             ChunkContext chunkContext) throws Exception {
 
         log.info("Hello Tasklet1");
-        log.info("param1=" + param1);
-        log.info("param2=" + param2);
+        log.info("param1={}" + param1);
+        log.info("param2={}" + param2);
 
         // System.out.println("Hello Tasklet1");
         // System.out.println("param1=" + param1);
