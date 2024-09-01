@@ -8,20 +8,20 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-public class HelloTasklet2 {
+@Component("HelloTasklet2")
+@StepScope
+public class HelloTasklet2 implements Tasklet {
 
-    @Component("HelloTasklet2")
-    @StepScope
-    public class HelloTasklet2 implements Tasklet {
+    @Value("#{JobExecutionContext['jobKey1']}")
+    private String jobValue1;
 
-        @Override
-        public RepeatStatus execute(StepContribution contribution,
-                ChunkContext chunkContext) throws Exception {
+    @Override
+    public RepeatStatus execute(StepContribution contribution,
+            ChunkContext chunkContext) throws Exception {
 
-            System.out.println("Hello Tasklet2");
-            System.out.println("jobValue1=" + jobValue1);
+        System.out.println("Hello Tasklet2");
+        System.out.println("jobValue1=" + jobValue1);
 
-            return RepeatStatus.FINISHED;
-        }
+        return RepeatStatus.FINISHED;
     }
 }
