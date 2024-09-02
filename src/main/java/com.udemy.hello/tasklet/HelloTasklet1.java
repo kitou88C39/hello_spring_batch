@@ -1,6 +1,5 @@
 package com.udemy.hello.tasklet;
 
-import org.springframework.batch.core.ExecutionContext;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -26,8 +25,8 @@ public class HelloTasklet1 implements Tasklet {
             ChunkContext chunkContext) throws Exception {
 
         log.info("Hello Tasklet1");
-        log.info("param1={}" + param1);
-        log.info("param2={}" + param2);
+        log.info("param1={}", param1); // パラメータ埋め込み修正
+        log.info("param2={}", param2); // パラメータ埋め込み修正
 
         // System.out.println("Hello Tasklet1");
         // System.out.println("param1=" + param1);
