@@ -84,6 +84,7 @@ public class SpringConfig {
                 .incrementer(new RunIdIncrementer())
                 .start(helloTaskletStep1())
                 .next(helloTaskletStep2())
+                .next(helloChuStep())
                 .validator(jobParametersValidator())
                 .build();
     }
