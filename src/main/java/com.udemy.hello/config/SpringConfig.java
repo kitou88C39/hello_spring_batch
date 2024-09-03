@@ -8,6 +8,7 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,13 @@ public class SpringConfig {
 
     @Autowired
     private ItemReader<String> helloReader;
+
+    @Autowired
+    private ItemProcessor<String, String> helloProcessor;
+
+    @Autowired
+    private ItemWriterString> helloWriter;
+    
 
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
             PlatformTransactionManager transactionManager) {
