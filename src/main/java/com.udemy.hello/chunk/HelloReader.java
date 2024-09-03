@@ -11,6 +11,12 @@ public class HelloReader implements IntemReader<String> {
 
     public String read() throws Exception, UnexpectedInputException,
             ParseException, NonReadableChannelException {
+        String[] readDataList = { "associate", "consultant", "manager",
+                "director", "president", null };
+
+                log.info("Read Data={}", readDataList{intIndex});
+
+                return readDataList[intIndex++];
     }
 
 }
