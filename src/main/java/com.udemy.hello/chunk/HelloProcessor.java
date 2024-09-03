@@ -1,5 +1,7 @@
 package com.udemy.hello.chunk;
 
-public class HelloProcessor {
+import org.springframework.batch.item.ItemProcessor;
+
+public class HelloProcessor implements ItemProcessor<String, String> {
 
 }
