@@ -3,6 +3,7 @@ package com.udemy.hello.config;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersValidator;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
@@ -41,6 +42,9 @@ public class SpringConfig {
 
     @Autowired
     private ItemWriter<String> helloWriter;
+
+    @Autowired
+    private JobExecutionListener helloJobExecutionListener;
 
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
             PlatformTransactionManager transactionManager) {
@@ -86,6 +90,7 @@ public class SpringConfig {
                 .next(helloTaskletStep2())
                 .next(helloChuStep())
                 .validator(jobParametersValidator())
+                .listener(helloJobExecutionListener)
                 .build();
     }
 }
