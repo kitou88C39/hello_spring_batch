@@ -1,5 +1,7 @@
 package com.udemy.hello.chunk;
 
-public class HelloWriter {
+import org.springframework.batch.item.ItemWriter;
+
+public class HelloWriter implements ItemWriter<String> {
 
 }
