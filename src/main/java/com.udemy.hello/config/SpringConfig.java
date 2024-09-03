@@ -71,6 +71,11 @@ public class SpringConfig {
     @Bean
     public Step helloChuStep() {
         return new StepBuilder("helloChunkStep", jobRepository)
+                .<String, String>chunk(1, transactionManager)
+                .reader(helloReader)
+                .processor(helloProcessor)
+                .writer(helloWriter)
+                .build();
     }
 
     @Bean
