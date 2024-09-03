@@ -69,6 +69,11 @@ public class SpringConfig {
     }
 
     @Bean
+    public Step helloChuStep() {
+        return new StepBuilder("helloChunkStep", jobRepository)
+    }
+
+    @Bean
     public Job helloJob() {
         return new JobBuilder("helloJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
