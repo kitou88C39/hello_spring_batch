@@ -12,11 +12,11 @@ public class HelloJobExecutionListener implements JobExecutionListener {
 
     @Override
     public void beforeJob(JobExecution jobExecution) {
-
+        log.info("Job スタート　at:{}", jobExecution.getStartTime());
     }
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-
+        log.info("Job 終了　at:{}", jobExecution.getEndTime());
     }
 }
