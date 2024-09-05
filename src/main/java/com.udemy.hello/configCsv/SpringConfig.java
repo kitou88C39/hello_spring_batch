@@ -8,6 +8,7 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.batch.item.file.FlatFileItemReader;
 
 @Configuration
 public class SpringConfig {
@@ -31,5 +32,7 @@ public class SpringConfig {
 
         FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
         reader.setResouce(inputCSV);
+        reader.setLinesToSkip(1);
+        reader.setEncoding(StandardCharsets.UTF_8.name());
     }
 }
