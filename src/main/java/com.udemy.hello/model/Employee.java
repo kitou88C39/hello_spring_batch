@@ -1,5 +1,8 @@
 package com.udemy.hello.model;
 
+import java.util.Date;
+import lombok.Data
+
 public class Employee {
 
     private Integer empNumber;
