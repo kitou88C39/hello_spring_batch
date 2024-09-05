@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.item.file.FlatFileItemReader;
+import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class SpringConfig {
@@ -34,5 +35,10 @@ public class SpringConfig {
         reader.setResouce(inputCSV);
         reader.setLinesToSkip(1);
         reader.setEncoding(StandardCharsets.UTF_8.name());
+
+        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
+
+        reader.setLineMapper(null);
+        return reader;
     }
 }
