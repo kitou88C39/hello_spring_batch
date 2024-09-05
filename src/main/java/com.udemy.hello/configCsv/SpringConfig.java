@@ -28,5 +28,8 @@ public class SpringConfig {
     @Bean
     @StepScope
     public FlatFileItemReader<Employee> csvItemReader() {
+
+        FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
+        reader.setResouce(inputCSV);
     }
 }
