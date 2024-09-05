@@ -4,6 +4,7 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -20,5 +21,8 @@ public class SpringConfig {
         this.jobLauncher = jobLauncher;
         this.jobRepository = jobRepository;
         this.transactionManager = transactionManager;
+    }
+
+    public FlatFileItemReader<Employee> csvItemReader() {
     }
 }
