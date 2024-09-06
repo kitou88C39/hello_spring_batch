@@ -3,6 +3,7 @@ package com.udemy.hello.configCsv;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.batch.core.configuration.annotation.StepScope;
@@ -13,6 +14,9 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
+
+import javax.sql.DataSource;
+
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
@@ -27,6 +31,9 @@ public class SpringConfig {
     @Value("${csv.path}")
     private Resource inputCSV;
 
+    @Autowired
+    private DataSource dataSource;
+
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
             PlatformTransactionManager transactionManager) {
         this.jobLauncher = jobLauncher;
@@ -40,6 +47,7 @@ public class SpringConfig {
 
         FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
         reader.setResouce(inputCSV);
+
         reader.setLinesToSkip(1);
         reader.setEncoding(StandardCharsets.UTF_8.name());
 
@@ -59,5 +67,7 @@ public class SpringConfig {
     }
 
     @Autowired
+    @Qualifier("empItemProcessor")
     public ItemProcessor<Employee, Employee> empItemProcessor;
+
 }
