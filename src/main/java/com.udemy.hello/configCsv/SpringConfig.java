@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
-import com.udemy.hello.model.Employee; // Ensure this is correct
+import com.udemy.hello.model.Employee;
 
 @Configuration
 public class SpringConfig {
@@ -49,20 +49,19 @@ public class SpringConfig {
     @StepScope
     public FlatFileItemReader<Employee> csvItemReader() {
 
-        FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
-        reader.setResouce(inputCSV);
-
+        FlatFileItemReader<Employee> reader = new FlatFileItemReader<>();
+        reader.setResource(inputCSV); // Correct method name
         reader.setLinesToSkip(1);
         reader.setEncoding(StandardCharsets.UTF_8.name());
 
-        BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<Employee>();
+        BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<>();
         beanWrapperFieldSetMapper.setTargetType(Employee.class);
 
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] csvTitleArray = new String[] { "EmpNumber", "EmpName", "JobTitle", "mgrNumber", "HireDate" };
         tokenizer.setNames(csvTitleArray);
 
-        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
+        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<>();
         lineMapper.setFieldSetMapper(beanWrapperFieldSetMapper);
         lineMapper.setLineTokenizer(tokenizer);
 
