@@ -10,6 +10,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import java.nio.charset.StandardCharsets;
+import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 
 @Configuration
 public class SpringConfig {
@@ -37,6 +38,8 @@ public class SpringConfig {
         reader.setEncoding(StandardCharsets.UTF_8.name());
 
         DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
+        lineMapper.setFieldSetMapper(null);
+        lineMapper.setLineTokenizer(null);
 
         reader.setLineMapper(null);
         return reader;
