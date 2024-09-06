@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import com.udemy.hello.model.Employee; // Ensure this is correct
 
 @Configuration
 public class SpringConfig {
