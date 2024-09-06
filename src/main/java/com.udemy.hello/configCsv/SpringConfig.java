@@ -78,6 +78,7 @@ public class SpringConfig {
     @Bean
     @StepScope
     public JdbcBatchItemWriter<Employee> jdbcBatchItemWriter() {
+        JdbcBatchItemWriter<Employee> writer = new JdbcBatchItemWriter<Employee>();
     }
 
 }
