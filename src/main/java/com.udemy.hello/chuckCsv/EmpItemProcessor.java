@@ -17,7 +17,7 @@ public class EmpItemProcessor implements ItemProcessor<Employee, Employee> {
     public Employee process(Employee item) throws Exception {
         log.info("Proceess...{}", item);
         item.setJobTitle(item.getJobTitle().toUpperCase());
-        return null;
+        return item;
     }
 
 }
