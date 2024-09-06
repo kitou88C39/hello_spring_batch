@@ -13,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
+import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 
 @Configuration
 public class SpringConfig {
@@ -42,11 +43,15 @@ public class SpringConfig {
         BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<Employee>();
         beanWrapperFieldSetMapper.setTargetType(Employee.class);
 
-        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
-        lineMapper.setFieldSetMapper(null);
-        lineMapper.setLineTokenizer(null);
+        DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
+        String[] csvTitleArray = new String[] { "EmpNumber", "EmpName", "JobTitle", "mgrNumber", "HireDate" };
+        tokenizer.setNames(csvTitleArray);
 
-        reader.setLineMapper(null);
+        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
+        lineMapper.setFieldSetMapper(beanWrapperFieldSetMapper);
+        lineMapper.setLineTokenizer(tokenizer);
+
+        reader.setLineMapper(lineMapper);
         return reader;
     }
 }
