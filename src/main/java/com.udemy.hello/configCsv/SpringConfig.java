@@ -34,6 +34,10 @@ public class SpringConfig {
     @Autowired
     private DataSource dataSource;
 
+    private static final String INSER_EMP_SQL =
+    "INSERT INTO employee(empNumber, empName, jobTitle,"
+                "mgrNumber,hireDate)"
+
     public SpringConfig(JobLauncher jobLauncher, JobRepository jobRepository,
             PlatformTransactionManager transactionManager) {
         this.jobLauncher = jobLauncher;
