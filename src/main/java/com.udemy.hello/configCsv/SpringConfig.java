@@ -83,7 +83,9 @@ public class SpringConfig {
 
         JdbcBatchItemWriter<Employee> writer = new JdbcBatchItemWriter<Employee>();
         writer.setDataSource(dataSource);
-        writer.setItemSqlParameterSourceProvider(null);
+        writer.setItemSqlParameterSourceProvider(provider);
+        writer.setSql(INSERT_EMP_SQL);
+        return writer;
     }
 
 }
