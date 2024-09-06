@@ -2,6 +2,7 @@ package com.udemy.hello.configCsv;
 
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -87,5 +88,9 @@ public class SpringConfig {
         writer.setSql(INSERT_EMP_SQL);
         return writer;
     }
+
+    @Bean
+    public Step chunkStep1()
+    return new StepBuilder("EmpOmportStep1", jobRepository)
 
 }
