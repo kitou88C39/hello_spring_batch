@@ -18,7 +18,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
 import org.springframework.batch.core.Step;
-
+import org.springframework.batch.core.Job;
 import javax.sql.DataSource;
 
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
@@ -99,4 +99,9 @@ public class SpringConfig {
     .writer(jdbcItemWriter())
     .build();
 }
+
+public Job chunkJob(){
+    return new JobBuilder("chunkJob", jobRepository)
+}
+
 }
