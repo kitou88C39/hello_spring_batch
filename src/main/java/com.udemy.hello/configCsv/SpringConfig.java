@@ -34,13 +34,6 @@ public class SpringConfig {
     @Autowired
     private DataSource dataSource;
 
-    // private static final String INSER_EMP_SQL =
-    // "INSERT INTO
-
-    // employee(empNumber, empName, jobTitle,mgrNumber,hireDate)" +
-
-    // VALUES employee(empNumber, empName, jobTitle,mgrNumber,hireDate);
-
     private static final String INSERT_EMP_SQL = "INSERT INTO employee (empNumber, empName, jobTitle, mgrNumber, hireDate) "
             +
             "VALUES (empNumber, empName, jobTitle, mgrNumber, hireDate)";
