@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
@@ -49,19 +50,20 @@ public class SpringConfig {
     @StepScope
     public FlatFileItemReader<Employee> csvItemReader() {
 
-        FlatFileItemReader<Employee> reader = new FlatFileItemReader<>();
-        reader.setResource(inputCSV); // Correct method name
+        FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
+        reader.setResouce(inputCSV);
+
         reader.setLinesToSkip(1);
         reader.setEncoding(StandardCharsets.UTF_8.name());
 
-        BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<>();
+        BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<Employee>();
         beanWrapperFieldSetMapper.setTargetType(Employee.class);
 
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] csvTitleArray = new String[] { "EmpNumber", "EmpName", "JobTitle", "mgrNumber", "HireDate" };
         tokenizer.setNames(csvTitleArray);
 
-        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<>();
+        DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
         lineMapper.setFieldSetMapper(beanWrapperFieldSetMapper);
         lineMapper.setLineTokenizer(tokenizer);
 
@@ -72,5 +74,10 @@ public class SpringConfig {
     @Autowired
     @Qualifier("empItemProcessor")
     public ItemProcessor<Employee, Employee> empItemProcessor;
+
+    @Bean
+    @StepScope
+    public JdbcBatchItemWriter<Employee> jdbcBatchItemWriter() {
+    }
 
 }
