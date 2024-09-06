@@ -17,7 +17,7 @@ import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
-import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.Step;
 
 import javax.sql.DataSource;
 
