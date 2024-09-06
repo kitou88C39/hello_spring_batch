@@ -8,12 +8,9 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import com.udemy.hello.model.Employee;
-
 import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
-
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 
@@ -43,6 +40,7 @@ public class SpringConfig {
         reader.setEncoding(StandardCharsets.UTF_8.name());
 
         BeanWrapperFieldSetMapper<Employee> beanWrapperFieldSetMapper = new BeanWrapperFieldSetMapper<Employee>();
+        beanWrapperFieldSetMapper.setTargetType(Employee.class);
 
         DefaultLineMapper<Employee> lineMapper = new DefaultLineMapper<Employee>();
         lineMapper.setFieldSetMapper(null);
