@@ -12,7 +12,11 @@ import lombok.extern.slf4j.Slf4j;
 @StepScope
 @Slf4j
 public class EmpItemProcessor implements ItemProcessor<Employee, Employee> {
+
+    @Override
     public Employee process(Employee item) throws Exception {
+        log.info("Proceess...{}", item);
+        item.setJobTitle(item.getJobTitle().toUpperCase());
         return null;
     }
 
