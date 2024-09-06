@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ClassPathResource;
@@ -78,6 +79,8 @@ public class SpringConfig {
     @Bean
     @StepScope
     public JdbcBatchItemWriter<Employee> jdbcBatchItemWriter() {
+        BeanPropertyItemSqlParameterSourceProvider<Employee> provider = new BeanPropertyItemSqlParameterSourceProvider<Employee>();
+
         JdbcBatchItemWriter<Employee> writer = new JdbcBatchItemWriter<Employee>();
         writer.setDataSource(dataSource);
         writer.setItemSqlParameterSourceProvider(null);
