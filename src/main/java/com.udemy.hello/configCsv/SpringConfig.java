@@ -1,6 +1,7 @@
 package com.udemy.hello.configCsv;
 
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import org.springframework.core.io.ClassPathResource;
 import java.nio.charset.StandardCharsets;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.job.builder.JobBuilder;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
@@ -100,8 +103,11 @@ public class SpringConfig {
     .build();
 }
 
-public Job chunkJob(){
-    return new JobBuilder("chunkJob", jobRepository)
-}
+    public Job chunkJob() {
+        return new JobBuilder("chunkJob", jobRepository)
+                .incrementer(new RunIdIncrementer())
+                .start(chunkStep1())
+                .build();
+    }
 
 }
