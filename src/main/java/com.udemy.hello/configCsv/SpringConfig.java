@@ -94,15 +94,16 @@ public class SpringConfig {
     }
 
     @Bean
-    public Step chunkStep1(){
-    return new StepBuilder("EmpOmportStep1", jobRepository)
-    .<Employee Employee>chunk(1, transactionManager)
-    .reader(csvItemReader())
-    .processor(empItemProcessor)
-    .writer(jdbcItemWriter())
-    .build();
-}
+    public Step chunkStep1() {
+        return new StepBuilder("EmpImportStep1", jobRepository)
+                .<Employee, Employee>chunk(1, transactionManager)
+                .reader(csvItemReader())
+                .processor(empItemProcessor)
+                .writer(jdbcItemWriter())
+                .build();
+    }
 
+    @Bean
     public Job chunkJob() {
         return new JobBuilder("chunkJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
