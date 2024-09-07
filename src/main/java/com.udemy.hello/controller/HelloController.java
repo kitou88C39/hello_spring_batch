@@ -1,5 +1,7 @@
 package com.udemy.hello.controller;
 
+import java.util.Date;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -24,5 +26,6 @@ public class HelloController {
         JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
         jobParametersBuilder.addString("param1", request.getParam1());
         jobParametersBuilder.addString("param1", request.getParam2());
+        jobParametersBuilder.addDate("date", new Date());
     }
 }
