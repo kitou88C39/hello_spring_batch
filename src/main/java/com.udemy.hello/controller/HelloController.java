@@ -22,5 +22,7 @@ public class HelloController {
     @PostMapping("/launch")
     public void launchJob(@RequestBody JobLaunchRequest request) {
         JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
+        jobParametersBuilder.addString("param1", request.getParam1());
+        jobParametersBuilder.addString("param1", request.getParam2());
     }
 }
