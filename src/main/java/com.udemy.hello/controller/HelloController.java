@@ -3,6 +3,7 @@ package com.udemy.hello.controller;
 import java.util.Date;
 
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,13 @@ public class HelloController {
     private Job job;
 
     @PostMapping("/launch")
-    public void launchJob(@RequestBody JobLaunchRequest request) {
+    public void launchJob(@RequestBody JobLaunchRequest request) throws Exception {
         JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
         jobParametersBuilder.addString("param1", request.getParam1());
         jobParametersBuilder.addString("param1", request.getParam2());
         jobParametersBuilder.addDate("date", new Date());
+
+        JobExecution execution = jobLauncher.run(job,
+                jobParametersBuilder.toJobParameters());
     }
 }
