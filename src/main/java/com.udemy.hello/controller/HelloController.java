@@ -1,5 +1,6 @@
 package com.udemy.hello.controller;
 
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,6 +13,6 @@ public class HelloController {
     private JobLauncher jobLauncher;
 
     @Autowired
-    @Qualifier
+    @Qualifier("helloJob")
     private Job job;
 }
