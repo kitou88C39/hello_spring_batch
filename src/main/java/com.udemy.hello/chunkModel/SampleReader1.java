@@ -1,5 +1,9 @@
 package com.udemy.hello.chunkModel;
 
-public class SampleReader1 {
+import org.springframework.batch.item.ItemReader;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
 
 }
