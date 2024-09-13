@@ -1,5 +1,8 @@
 package com.udemy.hello.chunkModel;
 
-public class ItemProcessor {
+import org.springframework.stereotype.Component;
+
+@Component
+public class ItemProcessor implements ItemProcessor {
 
 }
