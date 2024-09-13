@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
+import java.util.List;
 
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.UnexpectedInputException;
@@ -22,12 +23,16 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
             If(lines == null){
                 try{
                     lines = Files.readAllLines(Paths.get("C:¥¥work¥¥sample.csv"),Charset.forName("UTF-8"));
-                }catch{
-throw e;
+                }catch(Exception e){
+                throw e;
                 }        
-            
+            }
 
+            if(currentIndex < lines.size()){
+
+            }
+return ReceiveFileInfo;
         }
-    
+    return null;
     }
 }
