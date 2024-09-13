@@ -12,7 +12,7 @@ import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
+public class SampleReader implements ItemReader<ReceiveFileInfo> {
 
     private List<String> lines = null;
     private int currentIndex = 0;
