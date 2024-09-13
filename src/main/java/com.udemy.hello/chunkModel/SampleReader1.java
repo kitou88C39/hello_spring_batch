@@ -22,8 +22,10 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
             If(lines == null){
                 try{
                     lines = Files.readAllLines(Paths.get("C:¥¥work¥¥sample.csv"),Charset.forName("UTF-8"));
-                }
-            }
+                }catch{
+throw e;
+                }        
+            
 
         }
     
