@@ -4,6 +4,11 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleProcessor implements ItemProcessor<ReceiveFileInfo, Fileinfo> {
+public class SampleProcessor implements ItemProcessor<ReceiveFileInfo, FileInfo> {
+
+    @Override
+    public FileInfo process(ReceiveFileInfo item) throws Exception {
+
+    }
 
 }
