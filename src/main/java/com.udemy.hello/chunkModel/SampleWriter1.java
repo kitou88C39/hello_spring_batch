@@ -16,7 +16,11 @@ public class SampleWriter1 implements ItemWriter<FileInfo> {
     @Override
     public void write(Chunk<? extends FileInfo> chunk) throws Exception {
         for (FileInfo processedFileInfo : chunk.getItems()) {
+            try {
+                repository.save(processedFileInfo);
+            } catch (Exception e) {
+                throw e;
+            }
         }
     }
-
 }
