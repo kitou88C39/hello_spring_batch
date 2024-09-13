@@ -8,7 +8,8 @@ public class SampleProcessor implements ItemProcessor<ReceiveFileInfo, FileInfo>
 
     @Override
     public FileInfo process(ReceiveFileInfo item) throws Exception {
-
+        var processedFileInfo = new FileInfo();
+        processedFileInfo.setId(item.getId());
     }
 
 }
