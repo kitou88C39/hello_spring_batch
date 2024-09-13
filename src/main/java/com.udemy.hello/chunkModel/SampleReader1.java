@@ -18,8 +18,9 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
     private int currentIndex = 0;
 
     @Override
-    public ReceiveFileInfo read()
+    public ReceiverFileInfo read()
             throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+
         if (lines == null) {
             try {
                 lines = Files.readAllLines(Paths.get("C:/work/sample.csv"), Charset.forName("UTF-8"));
