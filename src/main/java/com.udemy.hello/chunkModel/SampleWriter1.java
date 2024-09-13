@@ -1,5 +1,6 @@
 package com.udemy.hello.chunkModel;
 
+import org.apache.tomcat.jni.FileInfo;
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,8 @@ public class SampleWriter1 implements ItemWriter<FileInfo> {
 
     @Override
     public void write(Chunk<? extends FileInfo> chunk) throws Exception {
+        for (FileInfo processedFileInfo : chunk.getItems()) {
+        }
     }
 
 }
