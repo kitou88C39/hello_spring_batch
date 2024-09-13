@@ -29,11 +29,14 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
         }
 
         if (currentIndex < lines.size()) {
-            String[] arrColumn = lines.get(currentIndex++).split(",");
-            ReceiveFileInfo receiveFileInfo = new ReceiveFileInfo();
-            // Set attributes to receiveFileInfo from arrColumn
+            var arrColumn = lines.get(currentIndex++).split(",");
+            var receiveFileInfo = new ReceiveFileInfo();
+            receiveFileInfo.setId(arrColumn[0]);
+            receiveFileInfo.setName(arrColumn[1]);
+            receiveFileInfo.setAge(Integer.parseInt(arrColumn[2]));
+
             return receiveFileInfo;
         }
-        return null; // Returning null indicates no more data
+        return null;
     }
 }
