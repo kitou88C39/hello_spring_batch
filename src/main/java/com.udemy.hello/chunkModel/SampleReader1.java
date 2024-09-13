@@ -1,5 +1,8 @@
 package com.udemy.hello.chunkModel;
 
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 
 import org.springframework.batch.item.ItemReader;
@@ -14,7 +17,15 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
 
     @Override
     public ReceiverFileInfo read() {
-        throw Exception, UnexpectedInputException, ParseException, NonTransientResourceException{}
+        throw Exception, UnexpectedInputException, ParseException, NonTransientResourceException{
+
+            If(lines == null){
+                try{
+                    lines = Files.readAllLines(Paths.get("C:¥¥work¥¥sample.csv"),Charset.forName("UTF-8"));
+                }
+            }
+
+        }
     
     }
 }
