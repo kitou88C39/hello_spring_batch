@@ -1,5 +1,9 @@
 package com.udemy.hello.chunkModel;
 
-public class SampleWriter1 {
+import org.springframework.batch.item.ItemWriter;
+
+public class SampleWriter1 implements ItemWriter<FileInfo> {
+
+    private final FileRepository repository;
 
 }
