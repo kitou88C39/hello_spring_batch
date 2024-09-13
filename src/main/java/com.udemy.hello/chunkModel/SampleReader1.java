@@ -29,9 +29,11 @@ public class SampleReader1 implements ItemReader<ReceiveFileInfo> {
             }
 
             if(currentIndex < lines.size()){
+                var arrColumn = lines.get(currentIndex++).split(",");
+                var ReceiveFileInfo = new ReceiveFileInfo();
 
             }
-return ReceiveFileInfo;
+        return ReceiveFileInfo;
         }
     return null;
     }
