@@ -10,6 +10,9 @@ public class SampleProcessor implements ItemProcessor<ReceiveFileInfo, FileInfo>
     public FileInfo process(ReceiveFileInfo item) throws Exception {
         var processedFileInfo = new FileInfo();
         processedFileInfo.setId(item.getId());
+        processedFileInfo.setId(item.getId());
+        processedFileInfo.setId(item.getId());
+        processedFileInfo.setId(item.getId());
     }
 
 }
